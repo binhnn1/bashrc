@@ -207,6 +207,7 @@ alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' 
 # Use the best version of pico installed
 edit ()
 {
+	
 	if [ "$(type -t vim)" = "file" ]; then
 		vim "$@"
 	elif [ "$(type -t jpico)" = "file" ]; then
@@ -220,6 +221,7 @@ edit ()
 }
 sedit ()
 {
+	
 	if [ "$(type -t vim)" = "file" ]; then
 		sudo vim "$@"
 	elif [ "$(type -t jpico)" = "file" ]; then
@@ -579,7 +581,7 @@ function __setprompt
 	PS1+="\[${DARKGRAY}\]:\[${MAGENTA}\]\j"
 
 	# Network Connections (for a server - comment out for non-server)
-	PS1+="\[${DARKGRAY}\]:\[${MAGENTA}\]Net $(awk 'END {print NR}' /proc/net/tcp)"
+	#PS1+="\[${DARKGRAY}\]:\[${MAGENTA}\]Net $(awk 'END {print NR}' /proc/net/tcp)"
 
 	PS1+="\[${DARKGRAY}\])-"
 
@@ -593,13 +595,13 @@ function __setprompt
 	fi
 
 	# Current directory
-	PS1+="\[${DARKGRAY}\]:\[${BROWN}\]\w\[${DARKGRAY}\])-"
+	PS1+="\[${DARKGRAY}\]:\[${BROWN}\]\w\[${DARKGRAY}\])"
 
 	# Total size of files in current directory
-	PS1+="(\[${GREEN}\]$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed 's/total //')\[${DARKGRAY}\]:"
+	#PS1+="-(\[${GREEN}\]$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed 's/total //')\[${DARKGRAY}\]:"
 
 	# Number of files
-	PS1+="\[${GREEN}\]\$(/bin/ls -A -1 | /usr/bin/wc -l)\[${DARKGRAY}\])"
+	#PS1+="\[${GREEN}\]\$(/bin/ls -A -1 | /usr/bin/wc -l)\[${DARKGRAY}\])"
 
 	# Skip to the next line
 	PS1+="\n"
